@@ -71,7 +71,7 @@ go test ./...
 
 ### Run the server
 ```shell
-go run ./...
+go run .
 ```
 
 ### Docs
