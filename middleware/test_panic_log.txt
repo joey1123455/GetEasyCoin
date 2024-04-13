@@ -1,0 +1,28 @@
+Panic recovered: <nil>
+goroutine 6 [running]:
+runtime/debug.Stack()
+	/usr/go/src/runtime/debug/stack.go:24 +0x5e
+github.com/joey1123455/getEasyCoins/middleware.writePanicToFile({0x6ff689?, 0xc00005dbe8?}, {0xc00005db6f?, 0xc00005dbb0?})
+	/home/legion/go/src/github.com/joey1123455/getEasyCoins/middleware/recovery.go:47 +0x165
+github.com/joey1123455/getEasyCoins/middleware.TestRecoveryWithFileLogger.RecoveryWithFileLogger.func2.1()
+	/home/legion/go/src/github.com/joey1123455/getEasyCoins/middleware/recovery.go:22 +0x4d
+panic({0x6926a0?, 0x783f00?})
+	/usr/go/src/runtime/panic.go:770 +0x132
+github.com/joey1123455/getEasyCoins/middleware.TestRecoveryWithFileLogger.func1(0x6?)
+	/home/legion/go/src/github.com/joey1123455/getEasyCoins/middleware/recovery_test.go:24 +0x25
+github.com/gin-gonic/gin.(*Context).Next(0xc0001a5900)
+	/home/legion/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x2b
+github.com/joey1123455/getEasyCoins/middleware.TestRecoveryWithFileLogger.RecoveryWithFileLogger.func2(0xc0001a5900?)
+	/home/legion/go/src/github.com/joey1123455/getEasyCoins/middleware/recovery.go:29 +0x5d
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/home/legion/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc00040c000, 0xc0001a5900)
+	/home/legion/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620 +0x66e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc00040c000, {0x786600, 0xc000402e00}, 0xc0003f4480)
+	/home/legion/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576 +0x1b2
+github.com/joey1123455/getEasyCoins/middleware.TestRecoveryWithFileLogger(0xc00013dd40)
+	/home/legion/go/src/github.com/joey1123455/getEasyCoins/middleware/recovery_test.go:30 +0x19d
+testing.tRunner(0xc00013dd40, 0x72d3b8)
+	/usr/go/src/testing/testing.go:1689 +0xfb
+created by testing.(*T).Run in goroutine 1
+	/usr/go/src/testing/testing.go:1742 +0x390

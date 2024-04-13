@@ -1,0 +1,151 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "oldOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnerSet",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_gid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_gtid",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_uid",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_data",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_time",
+				"type": "uint256"
+			}
+		],
+		"name": "storeGameData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_gid",
+				"type": "uint256"
+			}
+		],
+		"name": "getGameHistory",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "gid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "gtid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "uid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "data",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct GameHistory.GameSession[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_uid",
+				"type": "string"
+			}
+		],
+		"name": "getUserHistory",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "gid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "gtid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "uid",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "data",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct GameHistory.GameSession[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

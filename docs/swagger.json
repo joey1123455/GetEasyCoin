@@ -1,0 +1,227 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/game/history/user/{uid}": {
+            "get": {
+                "description": "handles the retrieval of game history for a given user ID. It paginates the results based on the page and pageSize query parameters.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user game history"
+                ],
+                "summary": "Show user game history",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID",
+                        "name": "uid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page number",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page size",
+                        "name": "pageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    }
+                }
+            }
+        },
+        "/game/history/{gid}": {
+            "get": {
+                "description": "handles the retrieval of game history for a given game ID. It paginates the results based on the page and pageSize query parameters.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "game history"
+                ],
+                "summary": "Show game history",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Game ID",
+                        "name": "gid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page number",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page size",
+                        "name": "pageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    }
+                }
+            }
+        },
+        "/game/store": {
+            "post": {
+                "description": "stores game data in the game history handler.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "game history"
+                ],
+                "summary": "Store game data",
+                "parameters": [
+                    {
+                        "description": "Game data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/data.GameSess"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handler.GameHistoryResFail"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "data.GameSess": {
+            "type": "object",
+            "required": [
+                "data",
+                "gid",
+                "gtid",
+                "time",
+                "uid"
+            ],
+            "properties": {
+                "data": {
+                    "type": "string"
+                },
+                "gid": {
+                    "type": "integer"
+                },
+                "gtid": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.GameHistoryResFail": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.GameHistoryResOk": {
+            "type": "object",
+            "properties": {
+                "page": {},
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
