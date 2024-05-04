@@ -68,3 +68,33 @@ describe("GameHistory", function () {
     });
  });
 });
+
+describe("TokenSender", function () {
+  let TokenSender, token, user, owner;
+
+  beforeEach(async function () {
+    // Deploy the ERC20 token
+    const Token = await ethers.getContractFactory("GLDToken");
+    const amount = ethers.utils.parseEther("1000");
+    token = await Token.deploy(amount);
+    await token.deployed();
+
+    // Mint some tokens to the contract
+    // const amount = ethers.utils.parseEther("1000");
+    await token.mint(address(this), amount);
+
+    // Deploy the TokenSender contract
+    TokenSender = await ethers.getContractFactory("GameHistory");
+    [owner, user] = await ethers.getSigners();
+    const tokenAddressEGC = token.address;
+    const contract = await TokenSender.deploy(tokenAddressEGC);
+    await contract.deployed();
+  });
+
+  it("Should send tokens from the contract to a user", async function () {
+    const amount = ethers.utils.parseEther("500");
+    await expect(contract.sendEgc(user.address, amount))
+    .to.emit(token, "Transfer")
+    .withArgs(owner.address, user.address, amount);
+  });
+});
